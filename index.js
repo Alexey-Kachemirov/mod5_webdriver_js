@@ -30,7 +30,7 @@ browser.wait(until.elementLocated(By.css("div[class*='dropdown-menu_header']")))
 browser.findElement(By.css("div[class*='dropdown-menu_header']")).click();
 browser.findElement(By.linkText("Manage Attributes")).click();
 browser.findElement(By.partialLinkText("Add Attr")).click();
-browser.findElement(By.css("div[class*='with-field_root'] input[class*='text-input_input']")).sendKeys("1name_for_webdriverjs_ak_module");
+browser.findElement(By.css("div[class*='with-field_root'] input[class*='text-input_input']")).sendKeys("!name_for_webdriverjs_ak_module");
 browser.findElement(By.css("textarea[class*='text-input_textarea']")).sendKeys("description_for_webdriverjs_ak_module");
 browser.findElement(By.xpath(".//span[text()='Please select...']")).click();
 browser.findElement(By.xpath(".//div[text()='Text']")).click();
@@ -39,7 +39,7 @@ browser.findElement(By.xpath(".//button[text()='Create']")).click();
 browser.findElement(By.css("div[class*='inline-notification_root__success']")).getText().then(function(txt){
     console.log("Success creation message: " + txt);
 });
-browser.findElement(By.css("i[data-qa-id='delete']")).click();
+browser.findElement(By.xpath(".//td[text()='!name_for_webdriverjs_ak_module']/..//i[@data-qa-id='delete']")).click();
 browser.findElement(By.xpath(".//button[text()='Yes']")).click();
 browser.wait(until.elementLocated(By.css("div[class*='inline-notification_root__success']")));
 browser.sleep(3000);
