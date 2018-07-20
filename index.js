@@ -1,4 +1,5 @@
 const creds = require("./creds");
+const expect = require("chai").expect;
 const webdriver = require("selenium-webdriver"),
     By = webdriver.By,
     until = webdriver.until;
@@ -23,6 +24,7 @@ driver.get('http://localhost:7000/')
     .then (_ => driver.findElement(By.xpath(".//span[text()='Sign in']")).isDisplayed())
     .then (_ => driver.findElement(By.xpath(".//span[text()='Sign in']")).click())
     .then (_ => driver.findElement(By.css("img[alt='Organics']")).isDisplayed())
+    .then (_ => driver.wait(until.elementLocated(By.css("div[class*='dropdown-menu_header']"))), 5000)
     .then (_ => driver.findElement(By.css("div[class*='dropdown-menu_header']")).isEnabled())
     .then (_ => driver.findElement(By.css("div[class*='dropdown-menu_header']")).click())
     .then (_ => driver.findElement(By.linkText("Manage Attributes")).isDisplayed())
@@ -49,5 +51,6 @@ driver.get('http://localhost:7000/')
     .then (_ => driver.findElement(By.xpath(".//td[text()='!name_for_webdriverjs_ak_module']/..//i[@data-qa-id='delete']")).click())
     .then (_ => driver.findElement(By.xpath(".//button[text()='Yes']")).click())
     .then (_ => driver.findElement(By.css("div[class*='inline-notification_root__success']")).isDisplayed())
+    .then (elementIsDisplayed => expect(true).to.equal(elementIsDisplayed))
     .then (_ => driver.wait(until.elementLocated(By.css("div[class*='inline-notification_root__success']"))), 5000)
     .then (_ => driver.quit());
